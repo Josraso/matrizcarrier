@@ -1,0 +1,1265 @@
+/* views/css/wizard.css */
+
+/* =================================================================
+   WIZARD - ASISTENTE DE CONFIGURACIÓN
+   ================================================================= */
+
+.wizard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Pasos del wizard */
+.wizard-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 0 20px;
+}
+
+.wizard-steps::before {
+.wizard-step.completed .wizard-step-number::after {
+    content: '\2713';
+    font-size: 24px;
+}
+
+.wizard-step-title {
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.wizard-step.active .wizard-step-title {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.wizard-step.completed .wizard-step-title {
+    color: #28a745;
+}
+
+/* Contenido del wizard */
+.wizard-content {
+    min-height: 400px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wizard-panel {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.wizard-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navegación del wizard */
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.wizard-navigation .btn {
+    min-width: 120px;
+}
+
+.wizard-navigation .btn-primary {
+    margin-left: auto;
+}
+
+/* Paso 1: Información básica */
+.carrier-type-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.carrier-type-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.carrier-type-card:hover {
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.2);
+}
+
+.carrier-type-card.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.carrier-type-card i {
+    font-size: 48px;
+    color: #007bff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.carrier-type-card h4 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.carrier-type-card p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Paso 2: Selección de plantilla */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.template-preview-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.template-preview-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.template-preview-card.selected {
+    border-color: #007bff;
+    background: #f0f8ff;
+}
+
+.template-preview-card.selected::after {
+    content: '\2713';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.template-preview-card h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.template-preview-card p {
+    margin: 0 0 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.template-preview-table {
+    width: 100%;
+    font-size: 11px;
+    border-collapse: collapse;
+}
+
+.template-preview-table th,
+.template-preview-table td {
+    padding: 4px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.template-preview-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Paso 3: Configuración de zonas */
+.zone-selector {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background: white;
+}
+
+.zone-group {
+    margin-bottom: 20px;
+}
+
+.zone-group-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.zone-item {
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.zone-item:hover {
+    background: #f8f9fa;
+}
+
+.zone-item label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.zone-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.zone-quick-actions {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.zone-quick-actions .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* Paso 4: Definir rangos */
+.range-builder {
+    margin-bottom: 20px;
+}
+
+.range-presets {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.range-preset {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+}
+
+.range-preset:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.range-preset.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.range-list {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.range-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.range-item:last-child {
+    border-bottom: none;
+}
+
+.range-item:hover {
+    background: #f8f9fa;
+}
+
+.range-item-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-item input {
+    width: 80px;
+}
+
+.range-item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.add-range-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Paso 5: Configurar precios */
+.price-strategy-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.price-strategy-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.price-strategy-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+}
+
+.price-strategy-card.selected {
+    border-color: #007bff;
+    background: #f0f8ff;
+}
+
+.price-strategy-card h5 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.price-strategy-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.price-formula-builder {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.formula-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.formula-row select,
+.formula-row input {
+    flex: 1;
+}
+
+/* Paso 6: Revisión y confirmación */
+.review-section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review-section h5 {
+    margin: 0 0 15px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.review-info {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+}
+
+.review-info dt {
+    font-weight: bold;
+    color: #666;
+}
+
+.review-info dd {
+    margin: 0;
+}
+
+.preview-matrix {
+    max-height: 300px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.preview-matrix table {
+    width: 100%;
+    font-size: 12px;
+}
+
+.preview-matrix th,
+.preview-matrix td {
+    padding: 5px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.preview-matrix th {
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+}
+
+.preview-matrix .zone-col {
+    background: #f8f9fa;
+    position: sticky;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Indicadores de progreso */
+.wizard-progress {
+    margin-bottom: 30px;
+}
+
+.wizard-progress-bar {
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.wizard-progress-fill {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+/* Animaciones */
+.slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Tooltips del wizard */
+.wizard-tooltip {
+    display: inline-block;
+    margin-left: 5px;
+    color: #6c757d;
+    cursor: help;
+    font-size: 14px;
+}
+
+.wizard-tooltip:hover {
+    color: #007bff;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .wizard-container {
+        padding: 10px;
+    }
+    
+    .wizard-steps {
+        padding: 0 10px;
+    }
+    
+    .wizard-step-title {
+        font-size: 12px;
+    }
+    
+    .wizard-content {
+        padding: 20px 15px;
+    }
+    
+    .carrier-type-selector,
+    .template-grid,
+    .price-strategy-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .wizard-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wizard-navigation .btn {
+        width: 100%;
+    }
+    
+    .range-presets {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .add-range-form {
+        flex-direction: column;
+    }
+    
+    .formula-row {
+        flex-direction: column;
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .wizard-content {
+        background: #1a1a1a;
+        color: #fff;
+    }
+    
+    .wizard-step-number {
+        background: #2a2a2a;
+        border-color: #444;
+    }
+    
+    .template-preview-card,
+    .carrier-type-card,
+    .zone-selector,
+    .range-list,
+    .review-section {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #fff;
+    }
+} '';
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    right: 50px;
+    height: 2px;
+    background: #ddd;
+    z-index: 0;
+}
+
+.wizard-step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+    cursor: pointer;
+}
+
+.wizard-step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.wizard-step.active .wizard-step-number {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    transform: scale(1.1);
+}
+
+.wizard-step.completed .wizard-step-number {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.wizard-step.completed .wizard-step-number::after {
+    content: '\2713';
+    font-size: 24px;
+}
+
+.wizard-step-title {
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.wizard-step.active .wizard-step-title {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.wizard-step.completed .wizard-step-title {
+    color: #28a745;
+}
+
+/* Contenido del wizard */
+.wizard-content {
+    min-height: 400px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wizard-panel {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.wizard-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navegación del wizard */
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.wizard-navigation .btn {
+    min-width: 120px;
+}
+
+.wizard-navigation .btn-primary {
+    margin-left: auto;
+}
+
+/* Paso 1: Información básica */
+.carrier-type-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.carrier-type-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.carrier-type-card:hover {
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.2);
+}
+
+.carrier-type-card.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.carrier-type-card i {
+    font-size: 48px;
+    color: #007bff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.carrier-type-card h4 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.carrier-type-card p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Paso 2: Selección de plantilla */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.template-preview-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.template-preview-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.template-preview-card.selected {
+    border-color: #007bff;
+    background: #f0f8ff;
+}
+
+.template-preview-card.selected::after {
+    content: '\2713';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.template-preview-card h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.template-preview-card p {
+    margin: 0 0 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.template-preview-table {
+    width: 100%;
+    font-size: 11px;
+    border-collapse: collapse;
+}
+
+.template-preview-table th,
+.template-preview-table td {
+    padding: 4px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.template-preview-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Paso 3: Configuración de zonas */
+.zone-selector {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background: white;
+}
+
+.zone-group {
+    margin-bottom: 20px;
+}
+
+.zone-group-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.zone-item {
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.zone-item:hover {
+    background: #f8f9fa;
+}
+
+.zone-item label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.zone-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.zone-quick-actions {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.zone-quick-actions .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* Paso 4: Definir rangos */
+.range-builder {
+    margin-bottom: 20px;
+}
+
+.range-presets {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.range-preset {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+}
+
+.range-preset:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.range-preset.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.range-list {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.range-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.range-item:last-child {
+    border-bottom: none;
+}
+
+.range-item:hover {
+    background: #f8f9fa;
+}
+
+.range-item-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-item input {
+    width: 80px;
+}
+
+.range-item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.add-range-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Paso 5: Configurar precios */
+.price-strategy-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.price-strategy-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.price-strategy-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+}
+
+.price-strategy-card.selected {
+    border-color: #007bff;
+    background: #f0f8ff;
+}
+
+.price-strategy-card h5 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.price-strategy-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.price-formula-builder {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.formula-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.formula-row select,
+.formula-row input {
+    flex: 1;
+}
+
+/* Paso 6: Revisión y confirmación */
+.review-section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review-section h5 {
+    margin: 0 0 15px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.review-info {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+}
+
+.review-info dt {
+    font-weight: bold;
+    color: #666;
+}
+
+.review-info dd {
+    margin: 0;
+}
+
+.preview-matrix {
+    max-height: 300px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.preview-matrix table {
+    width: 100%;
+    font-size: 12px;
+}
+
+.preview-matrix th,
+.preview-matrix td {
+    padding: 5px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.preview-matrix th {
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+}
+
+.preview-matrix .zone-col {
+    background: #f8f9fa;
+    position: sticky;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Indicadores de progreso */
+.wizard-progress {
+    margin-bottom: 30px;
+}
+
+.wizard-progress-bar {
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.wizard-progress-fill {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+/* Animaciones */
+.slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Tooltips del wizard */
+.wizard-tooltip {
+    display: inline-block;
+    margin-left: 5px;
+    color: #6c757d;
+    cursor: help;
+    font-size: 14px;
+}
+
+.wizard-tooltip:hover {
+    color: #007bff;
+}
+
+/* Loading del wizard */
+.wizard-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.wizard-loading .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.wizard-loading p {
+    color: white;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Mensajes de error */
+.wizard-notification {
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+input.error {
+    border-color: #dc3545;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .wizard-container {
+        padding: 10px;
+    }
+    
+    .wizard-steps {
+        padding: 0 10px;
+    }
+    
+    .wizard-step-title {
+        font-size: 12px;
+    }
+    
+    .wizard-content {
+        padding: 20px 15px;
+    }
+    
+    .carrier-type-selector,
+    .template-grid,
+    .price-strategy-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .wizard-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wizard-navigation .btn {
+        width: 100%;
+    }
+    
+    .range-presets {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .add-range-form {
+        flex-direction: column;
+    }
+    
+    .formula-row {
+        flex-direction: column;
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .wizard-content {
+        background: #1a1a1a;
+        color: #fff;
+    }
+    
+    .wizard-step-number {
+        background: #2a2a2a;
+        border-color: #444;
+    }
+    
+    .template-preview-card,
+    .carrier-type-card,
+    .zone-selector,
+    .range-list,
+    .review-section {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #fff;
+    }
+}
